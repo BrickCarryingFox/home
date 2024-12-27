@@ -5,13 +5,15 @@
         <span>
           <span :class="startYear < fullYear ? 'c-hidden' : 'hidden'">Copyright&nbsp;</span>
           &copy;
-          <span v-if="startYear < fullYear" class="site-start">
-            {{ startYear }} -
+          <span v-if="startYear < fullYear"
+            class="site-start">
+            {{ startYear }}
+            -
           </span>
           {{ fullYear }}
           <a :href="siteUrl">{{ siteAuthor }}</a>
         </span>
-        <!-- 以下信息请不要修改 -->
+        <!-- 以下信息请不要修改哦 -->
         <span class="hidden">
           &amp;&nbsp;Made&nbsp;by
           <a :href="config.github" target="_blank">
@@ -25,12 +27,18 @@
             {{ siteIcp }}
           </a>
         </span>
-        <!-- 公安联网备案 -->
-        <span>
+      </div>
+      <div v-else class="lrc">
+        <Transition name="fade" mode="out-in">
+          <div class="lrc-all" :key="store.getPlayerLrc">
+            <music-one theme="filled" size="18" fill="#efefef" />
+            <span class="lrc-text text-hidden" v-html="store.getPlayerLrc" />
+            <music-one theme="filled" size="18" fill="#efefef" />
+         <span>
+           </div>
           &amp;
-          <a v-if="sitePoliceIcp" :href="'https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=' + sitePoliceIcp" target="_blank">
-            <img src="https://www.beian.gov.cn/img/police.png" alt="公安备案图标" style="vertical-align: middle; height: 18px; margin-right: 5px;">
-            {{ sitePoliceIcp }}
+          <a v-if="siteIcp" href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank">
+            {{ sitePOLICE }}
           </a>
         </span>
       </div>
@@ -54,10 +62,6 @@ import config from "@/../package.json";
 
 const store = mainStore();
 const fullYear = new Date().getFullYear();
-const siteIcp = "鲁ICP备2024129143号-1"; // 替换为您的ICP备案号
-const sitePoliceIcp = "鲁公网安备37068202888907号"; // 替换为您的公安备案号
-const siteUrl = "https://brickcarryingfox.cn"; // 替换为您的网站地址
-</script>
 
 // 加载配置数据
 // const siteStartDate = ref(import.meta.env.VITE_SITE_START);
