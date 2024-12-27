@@ -5,8 +5,10 @@
         <span>
           <span :class="startYear < fullYear ? 'c-hidden' : 'hidden'">Copyright&nbsp;</span>
           &copy;
-          <span v-if="startYear < fullYear" class="site-start">
-            {{ startYear }} -
+          <span v-if="startYear < fullYear"
+            class="site-start">
+            {{ startYear }}
+            -
           </span>
           {{ fullYear }}
           <a :href="siteUrl">{{ siteAuthor }}</a>
@@ -24,12 +26,9 @@
           <a v-if="siteIcp" href="https://beian.miit.gov.cn" target="_blank">
             {{ siteIcp }}
           </a>
-        </span>
-        <!-- 公安备案 -->
-        <span v-if="sitePoliceIcp" style="display: block; margin-top: 5px;">
-          <a :href="`https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${sitePoliceIcpCode}`" target="_blank" style="display: flex; align-items: center;">
-            <img src="/path-to-police-icon.png" alt="公安备案图标" style="width: 16px; height: 16px; margin-right: 5px;" />
-            公网安备 {{ sitePoliceIcp }}
+          &amp;
+          <a v-if="siteIcp" href="https://beian.miit.gov.cn" target="_blank">
+            {{ sitePOLICE }}
           </a>
         </span>
       </div>
@@ -45,11 +44,12 @@
     </Transition>
   </footer>
 </template>
+
 <script setup>
 import { MusicOne } from "@icon-park/vue-next";
 import { mainStore } from "@/store";
 import config from "@/../package.json";
-const sitePoliceIcp = "鲁公网安备37068202888907号"; // 公安备案号
+
 const store = mainStore();
 const fullYear = new Date().getFullYear();
 
