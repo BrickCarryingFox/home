@@ -27,7 +27,7 @@
             {{ siteIcp }}
           </a>
           &amp;
-          <a v-if="siteIcp" href="https://beian.miit.gov.cn" target="_blank">
+          <a v-if="sitePOLICE" href="https://beian.mps.gov.cn/#/query/webSearch?code=37068202888907" target="_blank">
             {{ sitePOLICE }}
           </a>
         </span>
